@@ -7,7 +7,7 @@ const lessonSchema = new Schema({
   _id: { type: Schema.Types.ObjectId, auto: true },
   courseId: String,
 	teacherId: String,
-	tittle: String,
+	title: String,
   description: String,
   section: [{
   	topic: String,
