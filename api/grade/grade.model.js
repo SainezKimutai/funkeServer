@@ -5,6 +5,7 @@ const Model = mongoose.model;
 // Schema
 const gradeSchema = new Schema({
   _id: { type: Schema.Types.ObjectId, auto: true },
+  curriculumId: String,
   name: String,
   createdAt: Date,
   updatedAt: Date

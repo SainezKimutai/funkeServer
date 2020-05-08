@@ -1,4 +1,5 @@
 const lessonService = require('../services/lesson.service');
+const fileService = require('../services/file.service');
 
 
 exports.create = (req, res, next) => {

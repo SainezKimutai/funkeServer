@@ -6,7 +6,7 @@ const Model = mongoose.model;
 const teacherSchema = new Schema({
   _id: { type: Schema.Types.ObjectId, auto: true },
   name: String,
-  photo: {name: String, url: String },
+  image: {name: String, url: String },
   about: String,
   createdAt: Date,
   updatedAt: Date

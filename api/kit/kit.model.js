@@ -7,7 +7,7 @@ const kitSchema = new Schema({
   _id: { type: Schema.Types.ObjectId, auto: true },
   name: String,
   image: {name: String, url: String },
-	price: String,
+	price: Number,
 	description: String,
   createdAt: Date,
   updatedAt: Date

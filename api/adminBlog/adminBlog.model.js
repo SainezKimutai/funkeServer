@@ -5,8 +5,8 @@ const Model = mongoose.model;
 // Schema
 const adminBlogSchema = new Schema({
   _id: { type: Schema.Types.ObjectId, auto: true },
-  comment: String,
-  image: {name: String, url: String},
+  title: String,
+  body: String,
   createdAt: Date,
   updatedAt: Date
 });

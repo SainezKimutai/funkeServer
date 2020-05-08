@@ -2,6 +2,7 @@ const express = require('express');
  exports.register = (app) => {
     app.use('/api/users', require('./api/users'));
     app.use('/api/clientProfile', require('./api/clientProfile'));
+    app.use('/api/curriculum', require('./api/curriculum'));
     app.use('/api/grade', require('./api/grade'));
     app.use('/api/course', require('./api/course'));
     app.use('/api/lesson', require('./api/lesson'));

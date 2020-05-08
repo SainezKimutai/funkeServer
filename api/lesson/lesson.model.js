@@ -6,18 +6,14 @@ const Model = mongoose.model;
 const lessonSchema = new Schema({
   _id: { type: Schema.Types.ObjectId, auto: true },
   courseId: String,
-	teacherId: String,
-	title: String,
-  description: String,
-  section: [{
-  	topic: String,
-  	body: String,
-  	attachment: {
-      videoName: String, videoUrl: String,
-      imageName: String, imageUrl: String,
-      kitName: String, kitUrl: String, kitId: String
-      }
-    }],
+  teacherId: String,
+	topic: String,
+  body: String,
+  attachment: {
+    videoName: String, videoUrl: String,
+    imageName: String, imageUrl: String,
+    kitName: String, kitUrl: String, kitId: String
+    },
   createdAt: Date,
   updatedAt: Date
 });

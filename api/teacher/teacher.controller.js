@@ -1,5 +1,5 @@
 const teacherService = require('../services/teacher.service');
-
+const fileService = require('../services/file.service');
 
 exports.create = (req, res, next) => {
     teacherService.create(req.body)
