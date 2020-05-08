@@ -7,6 +7,7 @@ const gradeSchema = new Schema({
   _id: { type: Schema.Types.ObjectId, auto: true },
   curriculumId: String,
   name: String,
+  price: Number,
   createdAt: Date,
   updatedAt: Date
 });

@@ -9,6 +9,7 @@ const lessonSchema = new Schema({
   teacherId: String,
 	topic: String,
   body: String,
+  price: Number,
   attachment: {
     videoName: String, videoUrl: String,
     imageName: String, imageUrl: String,

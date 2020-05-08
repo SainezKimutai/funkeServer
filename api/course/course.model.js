@@ -8,6 +8,7 @@ const courseSchema = new Schema({
   gradeId: String,
   name: String,
   description: String,
+  price: Number,
   createdAt: Date,
   updatedAt: Date
 });

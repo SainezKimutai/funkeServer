@@ -6,6 +6,7 @@ const Model = mongoose.model;
 const curriculumSchema = new Schema({
   _id: { type: Schema.Types.ObjectId, auto: true },
   name: String,
+  price: Number,
   createdAt: Date,
   updatedAt: Date
 });
