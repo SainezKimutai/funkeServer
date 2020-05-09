@@ -11,10 +11,14 @@ const clientProfileSchema = new Schema({
   enrolledPupils:  [{
 		firstName: String,
 		lastName: String,
-    dob: Date,
-    currentGrade: Number
+    dob: Date
   }],
-  subscribedLessons: [{ lessonId: String }],
+  subscription: {
+    curriculums: [{curriculumId: String}],
+    grades: [{gradeId: String}],
+    courses: [{courseId: String}],
+    lessons: [{lessonId: String}]
+  },
   paidKits: [{ kitId: String }],
   createdAt: Date,
   updatedAt: Date
