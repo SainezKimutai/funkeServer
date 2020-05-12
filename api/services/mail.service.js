@@ -11,7 +11,15 @@ function sendCode(reqParam){
               pass: 'Gracemakau2019'
           }
         }
-
+        // let options = {
+        //   host: 'smtp.gmail.com',
+        //   port: 465,
+        //   // secure: true, // use SSL
+        //   auth: {
+        //       user: 'sainezkimutai@gmail.com',
+        //       pass: 'saineZ@13'
+        //     }
+        //   }
         let transporter = nodemailer.createTransport((options));
 
         let email = {
@@ -30,7 +38,7 @@ function sendCode(reqParam){
         };
 
         transporter.sendMail(email, function (err, data) {
-            !err ? resolve() : reject('Something went wrong');
+            !err ? resolve() : (reject('Something went wrong'), console.log(err));
          });
 
 

@@ -6,13 +6,6 @@ const Model = mongoose.model;
 const clientProfileSchema = new Schema({
   _id: { type: Schema.Types.ObjectId, auto: true },
   userId: String,
-  gender: String,
-  responsibility : {type: String, enum: ['parent', 'guardian']},
-  enrolledPupils:  [{
-		firstName: String,
-		lastName: String,
-    dob: Date
-  }],
   subscription: {
     curriculums: [{curriculumId: String}],
     grades: [{gradeId: String}],
