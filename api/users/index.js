@@ -12,4 +12,7 @@ router.put('/update/:id', controller.update);
 router.delete('/delete/:id', controller.delete);
 router.delete('/deleteAll', controller.deleteAll);
 
+router.post('/mobilePayment', controller.mobilePayment);
+router.post('/confirmMobilePayment', controller.confirmMobilePayment);
+
 module.exports = router;

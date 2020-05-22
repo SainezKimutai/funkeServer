@@ -1,5 +1,6 @@
 const userService = require('../services/user.service');
 const mailService = require("../services/mail.service");
+const paymentService = require("../services/payment.service");
 
 exports.login = (req, res, next) => {
     userService.authenticate(req.body)
@@ -47,3 +48,15 @@ exports.sendCode = (req, res, next) => {
       .then(e =>res.json({}))
       .catch(err => {res.sendStatus(401); console.log(err)});
   };
+
+exports.mobilePayment = (req, res, next) =>{
+    paymentService.mobilePay(req.body)
+    .then((response)=> response.code === 200 ? res.status(200).json(response) : res.status(500).json("There was a problem posting payment"))
+    .catch(err=> next(err))
+}
+
+exports.confirmMobilePayment = (req, res, next) => {
+    paymentService.mobilePaymentConfirm(req.body.transactionId)
+    .then((response)=> response.code === 200 ? res.status(200).json(response) : res.status(500).json("There was a problem confirming payment"))
+    .catch(err=> next(err))
+}

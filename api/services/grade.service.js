@@ -13,6 +13,9 @@ async function getAll() {
     return await Grade.find({});
 }
 
+async function getAllByCurriculum(id) {
+    return await Grade.find({curriculumId: id });
+}
 
 async function getOne(_id) {
     return Grade.findById(_id);
@@ -36,4 +39,4 @@ async function _delete(id) {
 }
 
 
-module.exports = { create, getAll, getOne, update, delete: _delete };
+module.exports = { create, getAll, getAllByCurriculum, getOne, update, delete: _delete };

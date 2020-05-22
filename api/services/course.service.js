@@ -19,6 +19,11 @@ async function getOne(_id) {
 }
 
 
+async function getAllByGrade(id) {
+    return await Course.find({gradeId: id });
+}
+
+
 async function update(id, reqParam) {
     let getReq = await Course.findById(id);
 
@@ -36,4 +41,4 @@ async function _delete(id) {
 }
 
 
-module.exports = { create, getAll, getOne, update, delete: _delete };
+module.exports = { create, getAll, getOne, getAllByGrade, update, delete: _delete };

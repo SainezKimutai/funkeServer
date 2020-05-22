@@ -18,6 +18,9 @@ async function getOne(_id) {
     return Lesson.findById(_id);
 }
 
+async function getAllByCourse(id) {
+    return await Lesson.find({courseId: id });
+}
 
 async function update(id, reqParam) {
     let getReq = await Lesson.findById(id);
@@ -36,4 +39,4 @@ async function _delete(id) {
 }
 
 
-module.exports = { create, getAll, getOne, update, delete: _delete };
+module.exports = { create, getAll, getOne, getAllByCourse, update, delete: _delete };

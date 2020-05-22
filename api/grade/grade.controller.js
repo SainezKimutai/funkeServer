@@ -15,8 +15,14 @@ exports.getAll = (req, res, next) => {
 
 exports.getOne = (req, res, next) => {
     gradeService.getOne(req.params.id)
-            .then(rsp => rsp ? res.json(rsp): res.sendStatus(404))
-            .catch(err => next(err));
+        .then(rsp => rsp ? res.json(rsp): res.sendStatus(404))
+        .catch(err => next(err));
+};
+
+exports.getAllByCurriculum = (req, res, next) => {
+    gradeService.getAllByCurriculum(req.params.id)
+        .then(rsp => rsp ? res.json(rsp): res.sendStatus(404))
+        .catch(err => next(err));
 };
 
 exports.update = (req, res, next) => {

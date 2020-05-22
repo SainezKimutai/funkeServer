@@ -9,5 +9,6 @@ const express = require('express');
     app.use('/api/kit', require('./api/kit'));
     app.use('/api/teacher', require('./api/teacher'));
     app.use('/api/adminBlog', require('./api/adminBlog'));
+    app.use('/api/order', require('./api/order'));
     app.use('/static', express.static('./public'));
 };

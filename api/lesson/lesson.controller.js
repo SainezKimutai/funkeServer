@@ -20,6 +20,12 @@ exports.getOne = (req, res, next) => {
             .catch(err => next(err));
 };
 
+exports.getAllByCourse = (req, res, next) => {
+    lessonService.getAllByCourse(req.params.id)
+        .then(rsp => rsp ? res.json(rsp): res.sendStatus(404))
+        .catch(err => next(err));
+};
+
 exports.update = (req, res, next) => {
     lessonService.update(req.params.id, req.body)
         .then((rsp)=> {res.json(rsp);})
