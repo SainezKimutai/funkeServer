@@ -20,6 +20,12 @@ exports.getOne = (req, res, next) => {
             .catch(err => next(err));
 };
 
+exports.getByUserId = (req, res, next) => {
+    clientProfileService.getByUserId(req.params.id)
+            .then(rsp => rsp ? res.json(rsp): res.sendStatus(404))
+            .catch(err => next(err));
+};
+
 exports.update = (req, res, next) => {
     clientProfileService.update(req.params.id, req.body)
         .then((rsp)=> {res.json(rsp);})

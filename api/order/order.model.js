@@ -6,7 +6,7 @@ const Model = mongoose.model;
 const orderSchema = new Schema({
   _id: { type: Schema.Types.ObjectId, auto: true },
   paymentMethod: {type: String, enum: ['m-pesa', 'paypal']},
-  clientProfileId: { type: Schema.Types.ObjectId},
+  userId: { type: Schema.Types.ObjectId},
   purchasedItems: {
     curriculums: [],
     grades: [],

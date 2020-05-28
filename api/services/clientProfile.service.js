@@ -18,6 +18,9 @@ async function getOne(_id) {
     return ClientProfile.findById(_id);
 }
 
+async function getByUserId(id) {
+    return await ClientProfile.find({userId: id });
+}
 
 async function update(id, reqParam) {
     let getReq = await ClientProfile.findById(id);
@@ -36,4 +39,4 @@ async function _delete(id) {
 }
 
 
-module.exports = { create, getAll, getOne, update, delete: _delete };
+module.exports = { create, getAll, getOne, getByUserId, update, delete: _delete };
