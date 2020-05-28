@@ -6,20 +6,12 @@ function sendCode(reqParam){
       let options = {
           host: "smtp.gmail.com",
           port: 465,
-          auth: {
-              user: 'muindegeofrey@gmail.com',
-              pass: 'Gracemakau2019'
-          }
+            auth: {
+                user: 'dev@imprintaf.com',
+                pass: 'Impintd3v2019!'
+            }
         }
-        // let options = {
-        //   host: 'smtp.gmail.com',
-        //   port: 465,
-        //   // secure: true, // use SSL
-        //   auth: {
-        //       user: 'sainezkimutai@gmail.com',
-        //       pass: 'saineZ@13'
-        //     }
-        //   }
+
         let transporter = nodemailer.createTransport((options));
 
         let email = {
