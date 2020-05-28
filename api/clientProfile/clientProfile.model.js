@@ -6,13 +6,14 @@ const Model = mongoose.model;
 const clientProfileSchema = new Schema({
   _id: { type: Schema.Types.ObjectId, auto: true },
   userId: String,
-  subscription: {
-    curriculums: [{curriculumId: String}],
-    grades: [{gradeId: String}],
-    courses: [{courseId: String}],
-    lessons: [{lessonId: String}]
-  },
-  paidKits: [{ kitId: String }],
+  subscription: [{
+    curriculums: [],
+    grades: [],
+    courses: [],
+    lessons: [],
+    subscriptionDate: Date,
+  }],
+  paidKits: [],
   createdAt: Date,
   updatedAt: Date
 });

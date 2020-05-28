@@ -19,7 +19,7 @@ async function getOne(_id) {
 }
 
 async function getByUserId(id) {
-    return await ClientProfile.find({userId: id });
+    return await ClientProfile.findOne({userId: id });
 }
 
 async function update(id, reqParam) {
