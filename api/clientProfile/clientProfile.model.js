@@ -14,7 +14,11 @@ const clientProfileSchema = new Schema({
     subscriptionDate: Date,
   }],
   fevouriteLessons: [],
-  paidKits: [],
+  paidKits: [{
+    orderId: { type: Schema.Types.ObjectId },
+    kitsDelivered: { type: Schema.Types.Boolean, default: false },
+    kitId: []
+  }],
   createdAt: Date,
   updatedAt: Date
 });
