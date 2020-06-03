@@ -11,7 +11,7 @@ const userSchema = new Schema({
   lastName: {type: String},
   email: {type: String},
   password: {type: String},
-  userType: {type: String, enum: ['client', 'admin']},
+  userType: {type: String, enum: ['client', 'admin'], default: 'client'},
   createdOn: { type : Date, default: Date.now }
 });
 

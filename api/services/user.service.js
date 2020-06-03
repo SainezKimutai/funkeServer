@@ -2,6 +2,8 @@ const Secret = require('../../database').Secret;
 const jwt = require('jsonwebtoken');
 const bcrypt = require('bcrypt-nodejs');
 const User = require('../users/users.model').User;
+const ClientProfile = require('../clientProfile/clientProfile.model').ClientProfile;
+
 
 // Authenticate Users
 async function authenticate({ email, password }) {
@@ -17,6 +19,10 @@ async function authenticate({ email, password }) {
     }
 }
 
+
+
+
+
 // Create New User
 async function create(userParam){
     // Check Id user existes
@@ -29,10 +35,27 @@ async function create(userParam){
     // Save User
     await user.save();
 
-    return User.findOne({ email: user.email});
-
+    let saveUser = User.findOne({ email: user.email});
+    let newClientProf = {
+        userId: saveUser._id,
+        subscription: [],
+        paidKits: [],
+        createdAt: new Date(),
+        updatedAt: new Date()
+    };
+    createClientProfile(newClientProf);
+    return saveUser;
 }
 
+
+// Create New User
+async function createClientProfile(reqParam){
+  let newReq = new ClientProfile(reqParam);
+  await newReq.save();
+
+  return ClientProfile.findOne({ _id: newReq._id });
+
+}
 
 // Get All Users
 async function getAll() {

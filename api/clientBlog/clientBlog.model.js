@@ -3,18 +3,16 @@ const Schema = mongoose.Schema;
 const Model = mongoose.model;
 
 // Schema
-const adminBlogSchema = new Schema({
+const clientBlogSchema = new Schema({
   _id: { type: Schema.Types.ObjectId, auto: true },
+  userId: { type: Schema.Types.ObjectId },
   title: String,
-  content: [{
-      body: String,
-      image: { url: String, name: String}
-    }],
+  body: String,
   createdAt: Date,
   updatedAt: Date
 });
 
 // model
-const AdminBlog = Model('AdminBlog', adminBlogSchema);
+const ClientBlog = Model('ClientBlog', clientBlogSchema);
 
-module.exports = { AdminBlog : AdminBlog };
+module.exports = { ClientBlog : ClientBlog };
