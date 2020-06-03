@@ -35,16 +35,7 @@ async function create(userParam){
     // Save User
     await user.save();
 
-    let saveUser = User.findOne({ email: user.email});
-    let newClientProf = {
-        userId: saveUser._id,
-        subscription: [],
-        paidKits: [],
-        createdAt: new Date(),
-        updatedAt: new Date()
-    };
-    createClientProfile(newClientProf);
-    return saveUser;
+    return await User.findOne({ email: user.email});
 }
 
 
@@ -92,4 +83,4 @@ async function _delete(id) {
     await User.deleteOne({_id: id});
 }
 
-module.exports = { authenticate, create, getAll, getOne, update, delete: _delete };
+module.exports = { authenticate, create, getAll, getOne, update, delete: _delete, createClientProfile};

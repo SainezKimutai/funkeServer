@@ -10,7 +10,23 @@ exports.login = (req, res, next) => {
 
 exports.create = (req, res, next) => {
     userService.create(req.body)
-        .then(user => user ? res.json(user) : res.status(409).json({ message: 'User already Exists' }))
+        .then(user => {
+            if(user) {
+              if (user.userType === 'client') {
+                let newClientProf = {
+                    userId: user._id,
+                    subscription: [],
+                    paidKits: [],
+                    createdAt: new Date(),
+                    updatedAt: new Date()
+                };
+                userService.createClientProfile(newClientProf);
+              }
+              res.json(user)
+            } else {
+              res.status(409).json({ message: 'User already Exists' })
+            }
+        })
         .catch(err => next(err));
 };
 
