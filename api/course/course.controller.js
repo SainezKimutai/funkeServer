@@ -1,4 +1,5 @@
 const courseService = require('../services/course.service');
+const fileService = require('../services/file.service');
 
 
 exports.create = (req, res, next) => {
@@ -36,3 +37,15 @@ exports.delete = (req, res, next) => {
         .then(()=> {res.json({});})
         .catch(err => next(err));
 };
+
+exports.uploadCourseImage = (req, res, next) => {
+  fileService.uploadCourseImage(req)
+    .then((e) => (res.json(e)))
+    .catch(err => {res.sendStatus(401); console.log(err)})
+}
+
+exports.removeCourseImage = (req, res, next) => {
+  fileService.removeCourseImage(req.params.name)
+    .then(()=> res.json({}))
+    .catch(err => next(err));
+}

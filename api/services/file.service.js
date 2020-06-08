@@ -41,6 +41,55 @@ async function removeClientImage(req, res) {
 
 
 
+
+
+
+// Course Image
+async function uploadCourseImage(req, res) {
+
+  return new Promise((resolve, reject)=>{
+  if (Object.keys(req.files).length == 0) {
+    return res.status(400).send('No files were uploaded.');
+  }
+  let fileUploaded = req.files.fileUploaded;
+  let nameTheFile = Date.now()+fileUploaded.name;
+  let fullDirectory = __dirname+'/../../public/images/courseImages/'+nameTheFile;
+
+  fileUploaded.mv(fullDirectory, function(err) {
+    if(!err){
+      resolve({
+        name: nameTheFile,
+        url: 'static/images/courseImages/'+nameTheFile
+      })
+    }
+    if(err){
+       console.log(err)
+    }
+  });
+  });
+
+}
+
+
+async function removeCourseImage(req, res) {
+
+  return new Promise((resolve, reject)=>{
+    let fileName = req;
+    let fileDirectory = __dirname+'/../../public/images/courseImages/'+fileName;
+      fs.unlink(fileDirectory,function(err){
+           if(err) return console.log(err);
+           resolve('File deleted successfully')
+      });
+  });
+}
+
+
+
+
+
+
+
+
 // Lessons Image
 async function uploadLessonImage(req, res) {
 
@@ -256,6 +305,7 @@ async function removeBlogImage(req, res) {
 
 module.exports = {
                     uploadClientImage, removeClientImage,
+                    uploadCourseImage, removeCourseImage,
                     uploadLessonImage, removeLessonImage,
                     uploadLessonVideo, removeLessonVideo,
                     uploadKitImage, removeKitImage,
