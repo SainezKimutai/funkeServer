@@ -9,8 +9,9 @@ const courseSchema = new Schema({
   name: String,
   description: String,
   price: Number,
+  image: {url: '', name: ''},
   createdAt: { type : Date, default: Date.now },
-  updatedAt: { type : Date, default: Date.now } 
+  updatedAt: { type : Date, default: Date.now }
 });
 
 // model
