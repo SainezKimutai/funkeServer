@@ -15,8 +15,8 @@ const lessonSchema = new Schema({
     imageName: String, imageUrl: String,
     kitName: String, kitUrl: String, kitId: String
     },
-  createdAt: Date,
-  updatedAt: Date
+  createdAt: { type : Date, default: Date.now },
+  updatedAt: { type : Date, default: Date.now }
 });
 
 // model

@@ -8,8 +8,8 @@ const clientBlogSchema = new Schema({
   userId: { type: Schema.Types.ObjectId },
   title: String,
   body: String,
-  createdAt: Date,
-  updatedAt: Date
+  createdAt: { type : Date, default: Date.now },
+  updatedAt: { type : Date, default: Date.now } 
 });
 
 // model

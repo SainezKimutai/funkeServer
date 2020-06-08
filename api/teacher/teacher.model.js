@@ -8,8 +8,8 @@ const teacherSchema = new Schema({
   name: String,
   image: {name: String, url: String },
   about: String,
-  createdAt: Date,
-  updatedAt: Date
+  createdAt: { type : Date, default: Date.now },
+  updatedAt: { type : Date, default: Date.now } 
 });
 
 // model

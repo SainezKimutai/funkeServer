@@ -20,6 +20,7 @@ async function getOne(_id) {
 
 
 async function update(id, reqParam) {
+    reqParam.updatedAt = new Date();
     let getReq = await Teacher.findById(id);
 
     if (!getReq) throw 'getReq not Found';

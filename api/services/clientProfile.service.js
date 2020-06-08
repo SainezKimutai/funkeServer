@@ -23,6 +23,7 @@ async function getByUserId(id) {
 }
 
 async function update(id, reqParam) {
+    reqParam.updatedAt = new Date();
     let getReq = await ClientProfile.findById(id);
 
     if (!getReq) throw 'getReq not Found';

@@ -12,7 +12,8 @@ const userSchema = new Schema({
   email: {type: String},
   password: {type: String},
   userType: {type: String, enum: ['client', 'admin'], default: 'client'},
-  createdOn: { type : Date, default: Date.now }
+  createdAt: { type : Date, default: Date.now },
+  updatedAt: { type : Date, default: Date.now }
 });
 
 userSchema.pre('save', function (next) {

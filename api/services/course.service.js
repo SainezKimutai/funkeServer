@@ -25,6 +25,7 @@ async function getAllByGrade(id) {
 
 
 async function update(id, reqParam) {
+    reqParam.updatedAt = new Date();
     let getReq = await Course.findById(id);
 
     if (!getReq) throw 'getReq not Found';

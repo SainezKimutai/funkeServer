@@ -7,8 +7,8 @@ const curriculumSchema = new Schema({
   _id: { type: Schema.Types.ObjectId, auto: true },
   name: String,
   price: Number,
-  createdAt: Date,
-  updatedAt: Date
+  createdAt: { type : Date, default: Date.now },
+  updatedAt: { type : Date, default: Date.now } 
 });
 
 // model

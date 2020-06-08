@@ -19,8 +19,8 @@ const clientProfileSchema = new Schema({
     kitsDelivered: { type: Schema.Types.Boolean, default: false },
     kitId: []
   }],
-  createdAt: Date,
-  updatedAt: Date
+  createdAt: { type : Date, default: Date.now },
+  updatedAt: { type : Date, default: Date.now } 
 });
 
 // model

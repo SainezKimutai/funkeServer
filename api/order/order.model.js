@@ -19,6 +19,8 @@ const orderSchema = new Schema({
   datePurchased: Date,
   payPalFullDetails: [],
   mpesaFullDetails: [],
+  createdAt: { type : Date, default: Date.now },
+  updatedAt: { type : Date, default: Date.now } 
 });
 
 // model

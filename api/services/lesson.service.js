@@ -23,6 +23,7 @@ async function getAllByCourse(id) {
 }
 
 async function update(id, reqParam) {
+    reqParam.updatedAt = new Date();
     let getReq = await Lesson.findById(id);
 
     if (!getReq) throw 'getReq not Found';

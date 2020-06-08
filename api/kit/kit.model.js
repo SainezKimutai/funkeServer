@@ -9,8 +9,8 @@ const kitSchema = new Schema({
   image: {name: String, url: String },
 	price: Number,
 	description: String,
-  createdAt: Date,
-  updatedAt: Date
+  createdAt: { type : Date, default: Date.now },
+  updatedAt: { type : Date, default: Date.now } 
 });
 
 // model

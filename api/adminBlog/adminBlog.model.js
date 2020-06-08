@@ -10,8 +10,8 @@ const adminBlogSchema = new Schema({
       body: String,
       image: { url: String, name: String}
     }],
-  createdAt: Date,
-  updatedAt: Date
+  createdAt: { type : Date, default: Date.now },
+  updatedAt: { type : Date, default: Date.now }
 });
 
 // model
