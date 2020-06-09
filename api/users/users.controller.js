@@ -15,6 +15,7 @@ exports.create = (req, res, next) => {
               if (user.userType === 'client') {
                 let newClientProf = {
                     userId: user._id,
+                    logo: {name: '', url: ''},
                     subscription: [],
                     paidKits: [],
                     createdAt: new Date(),

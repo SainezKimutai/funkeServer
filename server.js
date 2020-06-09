@@ -2,7 +2,7 @@ const express = require('express');
 const app = express();
 const cors = require('cors');
 const bodyParser = require('body-parser');
-const urlencodedParser = bodyParser.urlencoded({limit: '20mb', extended: true, parameterLimit:50000});
+const urlencodedParser = bodyParser.urlencoded({limit: '100mb', extended: true, parameterLimit:100000});
 const http = require('http');
 const server = http.createServer(app);
 const jwtRouteAuth = require('./helper/jwtAuthentication.js');
@@ -18,7 +18,7 @@ app.use(express.urlencoded({extended: false}));
 app.use(cors());
 
 // Bordy parser
-app.use(bodyParser.json({limit: '20mb'}));
+app.use(bodyParser.json({limit: '100mb'}));
 app.use(urlencodedParser);
 
 

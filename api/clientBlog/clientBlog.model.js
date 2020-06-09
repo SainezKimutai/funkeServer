@@ -6,10 +6,9 @@ const Model = mongoose.model;
 const clientBlogSchema = new Schema({
   _id: { type: Schema.Types.ObjectId, auto: true },
   userId: { type: Schema.Types.ObjectId },
-  title: String,
-  body: String,
+  comment: String,
   createdAt: { type : Date, default: Date.now },
-  updatedAt: { type : Date, default: Date.now } 
+  updatedAt: { type : Date, default: Date.now }
 });
 
 // model

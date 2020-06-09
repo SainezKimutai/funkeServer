@@ -6,6 +6,7 @@ const Model = mongoose.model;
 const clientProfileSchema = new Schema({
   _id: { type: Schema.Types.ObjectId, auto: true },
   userId: String,
+  logo: {name: String, url: String},
   subscription: [{
     curriculums: [],
     grades: [],
@@ -20,7 +21,7 @@ const clientProfileSchema = new Schema({
     kitId: []
   }],
   createdAt: { type : Date, default: Date.now },
-  updatedAt: { type : Date, default: Date.now } 
+  updatedAt: { type : Date, default: Date.now }
 });
 
 // model
