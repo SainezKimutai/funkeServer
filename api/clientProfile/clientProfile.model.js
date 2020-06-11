@@ -13,6 +13,7 @@ const clientProfileSchema = new Schema({
     courses: [],
     lessons: [],
     subscriptionDate: Date,
+    expiryDate: Date
   }],
   fevouriteLessons: [],
   paidKits: [{

@@ -11,5 +11,6 @@ const express = require('express');
     app.use('/api/adminBlog', require('./api/adminBlog'));
     app.use('/api/clientBlog', require('./api/clientBlog'));
     app.use('/api/order', require('./api/order'));
+    app.use('/api/stats', require('./api/stats'));
     app.use('/static', express.static('./public'));
 };
