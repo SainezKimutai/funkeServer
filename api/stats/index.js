@@ -4,6 +4,7 @@ const controller = require('./stats.controller');
 const router = express.Router();
 
 router.get('/totalClients', controller.totalClients);
-
+router.get('/ativeSubscriptions', controller.ativeSubscriptions);
+router.get('/totalRevenue', controller.totalRevenue);
 
 module.exports = router;
