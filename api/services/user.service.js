@@ -62,7 +62,7 @@ async function getOne(_id) {
 
 // Update User
 async function update(id, userParam) {
-    reqParam.updatedAt = new Date();
+    userParam.updatedAt = new Date();
     let user = await User.findById(id);
 
     // Validate
