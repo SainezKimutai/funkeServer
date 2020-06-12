@@ -61,7 +61,13 @@ exports.deleteAll = (req, res, next) => {
 };
 
 exports.sendCode = (req, res, next) => {
-  mailService.sendCode(req.body)
+  mailService.emailVerificationCode(req.body)
+      .then(e =>res.json({}))
+      .catch(err => {res.sendStatus(401); console.log(err)});
+  };
+
+exports.resetPasswordCode = (req, res, next) => {
+  mailService.resetPasswordCode(req.body)
       .then(e =>res.json({}))
       .catch(err => {res.sendStatus(401); console.log(err)});
   };

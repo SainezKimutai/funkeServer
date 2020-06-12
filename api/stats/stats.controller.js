@@ -46,11 +46,20 @@ exports.ativeSubscriptions = (req, res, next) => {
 };
 
 
+
+
+
+
+
 function addDays(date, days) {
-  var result = new Date(date);
+  let result = new Date(date);
   result.setDate(result.getDate() + days);
   return result;
 }
+
+
+
+
 
 exports.totalRevenue = (req, res, next) => {
     orderService.getAll()
@@ -71,9 +80,53 @@ exports.totalRevenue = (req, res, next) => {
             let ActiveScriptionRevevue = await ActiveScriptionOrders.reduce((a,b) => a + b.amountPayed, 0);
             let AllKitsRevevue = await AllKitsOrders.reduce((a,b) => a + b.amountPayed, 0);
 
-            res.json({allSubscriptions: AllScriptionRevevue, activeSubscription: ActiveScriptionRevevue, allKits: AllKitsRevevue})
+            res.json({allSubscriptions: AllScriptionRevevue, activeSubscriptions: ActiveScriptionRevevue, allKits: AllKitsRevevue})
           }
           getRevenueFunction();
         })
         .catch(err => next(err));
+};
+
+
+
+
+
+
+
+
+exports.contentSubscriptionRate = (req, res, next) => {
+  orderService.getAll()
+      .then(AllOrder => {
+        async function getRevenueFunction () {
+          let obj = {
+            curriculum: 0,
+            grade: 0,
+            course: 0,
+            lesson: 0
+          }
+          let AllScriptionOrders = await AllOrder.filter((ord) => ord.purchasedItems.kits.length === 0 ).map(e => e);
+          AllScriptionOrders.forEach((item, i, arr) => {
+              obj.curriculum = obj.curriculum + item.purchasedItems.curriculums.length
+              obj.grade = obj.grade + item.purchasedItems.grades.length
+              obj.course = obj.course + item.purchasedItems.courses.length
+              obj.lesson = obj.lesson + item.purchasedItems.lessons.length
+
+              if ( i === arr.length - 1) { res.json(obj) }
+          });
+          if (AllScriptionOrders.length === 0) {res.json(obj)}
+
+        }
+        getRevenueFunction();
+      })
+      .catch(err => next(err));
+};
+
+
+exports.clientSubscriptionRate = (req, res, next) => {
+  clientProfileService.getAll()
+      .then(AllClients => {
+        res.json({totalClients: AllClients.length})
+      })
+      .catch(err => next(err));
+
 };
