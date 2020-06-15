@@ -90,7 +90,7 @@ async function updateByEmail(email, userParam) {
 
     await user.save();
 
-    return User.findById(id);
+    return User.findOne({ email: email });
 
 }
 
