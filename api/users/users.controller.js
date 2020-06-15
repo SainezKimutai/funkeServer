@@ -49,6 +49,12 @@ exports.update = (req, res, next) => {
         .catch(err => next(err));
 };
 
+exports.updateByEmail = (req, res, next) => {
+    userService.updateByEmail(req.params.email, req.body)
+        .then((user)=> res.json(user))
+        .catch(err => next(err));
+};
+
 exports.delete = (req, res, next) => {
     userService.delete(req.params.id)
         .then(()=> res.json({}))

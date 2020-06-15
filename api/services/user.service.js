@@ -77,6 +77,23 @@ async function update(id, userParam) {
 
 }
 
+// Update User By email
+async function updateByEmail(email, userParam) {
+    userParam.updatedAt = new Date();
+    let user = await User.findOne({ email: email });
+
+    // Validate
+    if (!user) throw 'User not Found';
+
+    // Copy userParam
+    Object.assign(user, userParam);
+
+    await user.save();
+
+    return User.findById(id);
+
+}
+
 
 
 //Delete user
@@ -84,4 +101,4 @@ async function _delete(id) {
     await User.deleteOne({_id: id});
 }
 
-module.exports = { authenticate, create, getAll, getOne, update, delete: _delete, createClientProfile};
+module.exports = { authenticate, create, getAll, getOne, update, updateByEmail, delete: _delete, createClientProfile};

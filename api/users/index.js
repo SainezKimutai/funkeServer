@@ -10,6 +10,7 @@ router.post('/register', controller.create);
 router.post('/sendCode', controller.sendCode);
 router.post('/resetPasswordCode', controller.resetPasswordCode);
 router.put('/update/:id', controller.update);
+router.put('/updateByEmail/:email', controller.updateByEmail);
 router.delete('/delete/:id', controller.delete);
 router.delete('/deleteAll', controller.deleteAll);
 
