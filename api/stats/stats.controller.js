@@ -130,3 +130,27 @@ exports.clientSubscriptionRate = (req, res, next) => {
       .catch(err => next(err));
 
 };
+
+
+
+exports.subscriptionMonthlyBasis = (req, res, next) => {
+    orderService.getAll()
+      .then(AllOrder => {
+        let subArr = []
+        let AllScriptionOrders = AllOrder.filter((ord) => ord.purchasedItems.kits.length === 0 ).map(e => e);
+        AllScriptionOrders.forEach((orderItem, i, arr) => {
+          let subObj = {
+            subscriptionNumber : Number(orderItem.purchasedItems.curriculums.length) + Number(orderItem.purchasedItems.grades.length) + Number(orderItem.purchasedItems.courses.length) + Number(orderItem.purchasedItems.lessons.length),
+            month : orderItem.createdAt.getMonth(),
+            year : orderItem.createdAt.getFullYear(),
+            date : orderItem.createdAt
+          }
+          subArr.push(subObj);
+          if (i === arr.length - 1){ res.json(subArr) };
+        });
+        if ( AllScriptionOrders.length === 0){ res.json([]) };
+
+      })
+      .catch(err => next(err));
+
+};
