@@ -1,5 +1,6 @@
 const clientProfileService = require('../services/clientProfile.service');
 const orderService = require('../services/order.service');
+const userService = require('../services/user.service');
 
 exports.totalClients = (req, res, next) => {
     clientProfileService.getAll()
@@ -124,8 +125,25 @@ exports.contentSubscriptionRate = (req, res, next) => {
 
 exports.clientSubscriptionRate = (req, res, next) => {
   clientProfileService.getAll()
-      .then(AllClients => {
-        res.json({totalClients: AllClients.length})
+    .then(AllClients => {
+        let ClientArr = [];
+        AllClients.forEach((clientPrf, i, arr) => {
+          let curNum = clientPrf.subscription.reduce((a, b) => a + b.curriculums.length, 0);
+          let grdNum = clientPrf.subscription.reduce((a, b) => a + b.grades.length, 0);
+          let corNum = clientPrf.subscription.reduce((a, b) => a + b.courses.length, 0);
+          let lesNum = clientPrf.subscription.reduce((a, b) => a + b.lessons.length, 0);
+          userService.getOne(clientPrf.userId)
+              .then(user => {
+                if (user) {
+                  ClientArr.push({
+                    client: user.firstName + ' ' + user.lastName,
+                    numberOfSubscriptions: Number(curNum) + Number(grdNum) + Number(corNum) + Number(lesNum)
+                  });
+                  if ( i === arr.length - 1) { res.json(ClientArr) }
+                } else {   if ( i === arr.length - 1) { res.json(ClientArr) } }
+              })
+              .catch(err => next(err));
+        });
       })
       .catch(err => next(err));
 

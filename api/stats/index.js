@@ -7,6 +7,7 @@ router.get('/totalClients', controller.totalClients);
 router.get('/ativeSubscriptions', controller.ativeSubscriptions);
 router.get('/totalRevenue', controller.totalRevenue);
 router.get('/contentSubscriptionRate', controller.contentSubscriptionRate);
+router.get('/clientSubscriptionRate', controller.clientSubscriptionRate);
 router.get('/subscriptionMonthlyBasis', controller.subscriptionMonthlyBasis);
 
 
