@@ -1,4 +1,4 @@
-const Biography = require('../biography/Biography.model').Biography;
+const Biography = require('../biography/biography.model').Biography;
 
 
 async function create(reqParam){
